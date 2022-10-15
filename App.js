@@ -4,32 +4,47 @@ import MapView, { Marker } from 'react-native-maps';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useState, useEffect } from 'react';
 import {Location, Permissions} from 'expo';
+//import * as Location from 'expo-location';
 
 export default function App() {
-
+  
+  const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null)
+  
   var userLat = 0;
   var userLong = 0;
 
   useEffect(() => {
-    load() 
-  }, [])
-  async function load() {
-    try {
-      let { grabStatus } = Location.requestPermissionsAsync();
+    (async () => {
+      
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+      }
 
-      if (grabStatus !== 'granted') { 
-        setErrorMsg("Unable to access location, turn on permissions in settings")
-        return
-      } 
-      const location = await Location.getCurrentPositionAsync()
-      const userLat = location.coords.latitude
-      const userLong = location.coords.longitude
-    }
-    catch (e) {
-      alert(e)
-    }
-  }
+      let location = await Location.getCurrentPositionAsync({});
+      userLat = location.coords.latitude;
+      userLong = location.coords.longitude;
+      
+    })();
+  }, []);
+    
+  // async function load() {
+  //   try {
+  //     let { grabStatus } = Location.requeswefwefwfwefweffwetPermissionsAsync();
+
+  //     if (grabStatus !== 'granted') { 
+  //       setErrorMsg("Unable to access location, turn on permissions in settings")
+  //       return
+  //     } 
+  //     const location = await Location.getCurrentPositionAsync()
+  //     userLat = location.coords.latitude
+  //     userLong = location.coords.longitude
+  //   }
+  //   catch (e) {
+  //     alert(e)
+  //   }
+  // }
 
   const [coords, setCoords] = useState({
     latitude: userLat,
