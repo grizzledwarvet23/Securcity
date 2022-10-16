@@ -7,6 +7,14 @@ Developed for HackTX 2022
 
 Living in the city can be dangerous, and people, especially students, should be informed on which areas are less safe than others. Crowdsourcing + easy to understand circles = reliably avoid danger.
 
+## Pictures
+
+![gallery (1)](https://user-images.githubusercontent.com/56271444/196045519-b8d90b79-8703-4562-be13-d4eb04aa3b71.jpg)
+![gallery](https://user-images.githubusercontent.com/56271444/196045520-72a6a93f-f144-42e8-8f88-1a157b138e8a.jpg)
+
+
+
+
 ## Inspiration
 As freshman university students, we have all had the same issue of wishing we could have known to not go down a certain street to avoid some unpleasant interactions. We thought that this app would be cool to build because it could be really useful for students on campus and people in cities, in general.
 
