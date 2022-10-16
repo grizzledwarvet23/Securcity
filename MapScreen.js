@@ -66,6 +66,13 @@ export default function MapScreen({navigation}) {
     longitudeDelta: 0.0421,
   });
 
+  const [coords7, setCoords7] = useState({
+    latitude: 30.2824,
+    longitude: -97.7269,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
 
   const Map = 
   () => {
@@ -87,7 +94,7 @@ export default function MapScreen({navigation}) {
 
 
 
-  let op = '0.50';
+  let op = '0.5';
 
   let items= [ 
     <Circle center={coords} key={0}
@@ -113,6 +120,10 @@ export default function MapScreen({navigation}) {
           fillColor={'rgba(255,0,0,' + op + ')'}
         />,
         <Circle center={coords6} key={5}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,' + op + ')'}
+        />,
+        <Circle center={coords7} key={6}
           radius= {radius}
           fillColor={'rgba(255,0,0,' + op + ')'}
         />
@@ -217,6 +228,15 @@ export default function MapScreen({navigation}) {
         coordinate={coords6} 
         title="Assault" 
         description="Crazy concert near moody center, everyone's fighting in the line"
+        />
+
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords7} 
+        title="Dirty Area"
+        description="It smells like birdpoop..."
         />
 
    
