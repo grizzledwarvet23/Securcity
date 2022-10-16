@@ -11,25 +11,6 @@ export default function App() {
   var userLat = 0;
   var userLong = 0;
 
-  useEffect(() => {
-    load() 
-  }, [])
-  async function load() {
-    try {
-      let { grabStatus } = Location.requestPermissionsAsync();
-
-      if (grabStatus !== 'granted') { 
-        setErrorMsg("Unable to access location, turn on permissions in settings")
-        return
-      } 
-      const location = await Location.getCurrentPositionAsync()
-      const userLat = location.coords.latitude
-      const userLong = location.coords.longitude
-    }
-    catch (e) {
-      alert(e)
-    }
-  }
 
   const [coords, setCoords] = useState({
     latitude: userLat,
@@ -37,6 +18,15 @@ export default function App() {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+
+  const Map = () => {
+    const [pin, setPin] = useState({
+      latitude: 37.78825,
+      longitude: -122.4324,
+    });
+  }
+
+    
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Welcome to Securcity!</Text>
@@ -46,14 +36,14 @@ export default function App() {
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
       >
-        <Marker coordinate={coords} title="MARKER"/>
+        <Marker coordinate={coords} title="MARKER" draggable={true} onDragEnd={e=>setPin(e.nativeEvent.coordinate)} />
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>REPORT</Text>
       </TouchableOpacity>
       </MapView>
       <StatusBar style="auto"/>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
