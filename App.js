@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
@@ -52,64 +53,13 @@ export default function App() {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+=======
+import { StyleSheet, Text, View } from 'react-native'
+import ReportScreen from "./components/Report_Screen.js"
+
+export default function App() {
+>>>>>>> Stashed changes
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Welcome to Securcity!</Text>
-      <MapView
-        style={styles.map}
-        region={coords}
-        provider={PROVIDER_GOOGLE}
-        showsUserLocation={true}
-      >
-        <Marker coordinate={coords} title="MARKER"/>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>REPORT</Text>
-      </TouchableOpacity>
-      </MapView>
-      <StatusBar style="auto"/>
-    </View>
+    <ReportScreen/>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontSize: 10,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  //create a style for the map
-  map: {
-    alignSelf: 'stretch',
-    height: '100%',
-    alignItems: 'center',
-    // width: '100%',
-  },
-  //create a style for the title text
-  titleText: {
-    fontSize: 20,
-    fontWeight: "bold"
-  },
-  //create a style for the button
-  button: {
-    backgroundColor: 'red',
-    color: 'white',
-    padding: 10,
-    margin: 10,
-    width: 180,
-    height: 50,
-    borderRadius: 10,
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  //create a style for the button text
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: 'center',
-    textAlignVertical: 'center',
-  }
-
-});

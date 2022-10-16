@@ -4,7 +4,6 @@ import SelectDropdown from 'react-native-select-dropdown'
 const countries = ["Assault", "Robbery", "Homeless People", "Dirtiness", "Noise Pollution"]
 
 //https://reactnativeexample.com/a-highly-customized-dropdown-select-picker-menu-for-react-native/
-//https://reactnativeexample.com/react-native-animated-placeholder-textinput/
 
 export default function ReportScreen() {
     var text;
