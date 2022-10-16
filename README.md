@@ -1,6 +1,11 @@
 # Securcity
 Developed for HackTX 2022
 
+[HackTX Link](https://hacktx-2022.devpost.com/)
+
+[Project Link](https://devpost.com/software/securcity)
+
+
 ## Inspiration
 As freshman university students, we have all had the same issue of wishing we could have known to not go down a certain street to avoid some unpleasant interactions. We thought that this app would be cool to build because it could be really useful for students on campus and people in cities, in general.
 
