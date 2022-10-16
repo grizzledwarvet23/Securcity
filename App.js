@@ -4,6 +4,7 @@ import MapView, { Circle, Marker } from 'react-native-maps';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useState, useEffect } from 'react';
 import {Location, Permissions} from 'expo';
+//import {DangerZone} from './DangerZone.js';
 
 export default function App() {
 
@@ -18,6 +19,7 @@ export default function App() {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+
 
   const [coords2, setCoords2] = useState({
     latitude: 30.2849,
@@ -36,6 +38,45 @@ export default function App() {
       longitude: -122.4324,
     });
   }
+
+  //callback function that randomly generates a number
+  const randomNum = () => {
+    return Math.floor( (Math.random() * 100) + 100);
+  }
+
+  let radius = randomNum();
+  let radius2 = randomNum();
+
+  const drawCircles = (a) => {
+    for(let i = 0; i < a; i++){
+      drawCircle();
+    }
+  }
+
+  const drawCircle = (a) => {
+    return <Circle key={a} center={coords}
+    radius= {radius}
+    strokeColor= {'rgba(255,0,0,0.5)'}
+    fillColor= {'rgba(255,0,0,0.5)'} 
+    />;
+  }
+
+  let items= [ <Circle key={1} center={coords}
+    radius= {radius}
+    strokeColor= {'rgba(255,0,0,0.5)'}
+    fillColor= {'rgba(255,0,0,0.5)'}/>,
+
+    <Circle key={2} center={coords2}
+    radius= {radius}
+    strokeColor= {'rgba(255,0,0,0.5)'}
+    fillColor= {'rgba(255,0,0,0.5)'}/>
+  
+  ]; 
+
+  for(let a = 3; a < 100; a++){
+  items.push(drawCircle(a));
+  }
+
     
   return (
     <View style={styles.container}>
@@ -58,20 +99,11 @@ export default function App() {
           }}
           } 
         />
-          <Circle
-          center={coords}
-          radius= {200}
-          strokeColor= {'rgba(255,0,0,0.5)'}
-          fillColor= {'rgba(255,0,0,0.5)'} 
-          />
 
-        <Circle
-          center={coords2}
-          radius= {300}
-          strokeColor= {'rgba(255,0,0,0.5)'}
-          fillColor= {'rgba(255,0,0,0.5)'} 
-          />
-
+    {
+      items
+    }
+          
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>REPORT</Text>
       </TouchableOpacity>
@@ -134,3 +166,15 @@ const styles = StyleSheet.create({
 
 
 });
+// =======
+// =======
+// import { StyleSheet, Text, View } from 'react-native'
+// import ReportScreen from "./components/Report_Screen.js"
+
+// export default function App() {
+// >>>>>>> Stashed changes
+//   return (
+//     <ReportScreen/>
+//   );
+// }
+// >>>>>>> async

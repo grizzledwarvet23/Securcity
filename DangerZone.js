@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 //this would be for the red dots, to group together its data
 
 class DangerZone extends React.Component {
@@ -21,3 +22,5 @@ class DangerZone extends React.Component {
         );
     }
 }
+
+export default DangerZone;
