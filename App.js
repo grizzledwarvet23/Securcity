@@ -1,16 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View, Modal, Pressable} from 'react-native';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useState, useEffect } from 'react';
 import {Location, Permissions} from 'expo';
+import ReportScreen from './components/Report_Screen';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//import Modal from 'react-native-modal';
 //import {DangerZone} from './DangerZone.js';
 
 export default function App() {
+  const [modalVisible, setModalVisible] = useState(false);
+  // MODAL CHECK --> SCROLL TO REPORT BUTTON TO SEE MODAL TOGGLE ACTUAL CONTENT
+  // const [isModalVisible, setModalVisible] = useState(false);
+  // const toggleModal = () => {
+  //   setModalVisible(!isModalVisible);
+  // }  
 
   const [errorMsg, setErrorMsg] = useState(null)
-  var userLat = 0;
-  var userLong = 0;
+  var userLat = 1000;
+  var userLong =1000;
+  const opacity = '0.5';
 
 
   const [coords, setCoords] = useState({
@@ -20,13 +32,27 @@ export default function App() {
     longitudeDelta: 0.0421,
   });
 
-
   const [coords2, setCoords2] = useState({
     latitude: 30.2849,
-    longitude: -97.7320,
+    longitude: -97.6341,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+
+  const [coords3, setCoords3] = useState({
+    latitude: 30.2749,
+    longitude: -97.6341,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
+
+  // const [coords2, setCoords2] = useState({
+  //   latitude: userLat,
+  //   longitude: userLong,
+  //   latitudeDelta: 0.0922,
+  //   longitudeDelta: 0.0421,
+  // });
 
 
 
@@ -41,34 +67,23 @@ export default function App() {
 
   //callback function that randomly generates a number
   const randomNum = () => {
-    return Math.floor( (Math.random() * 100) + 100);
+    return Math.floor(Math.random() * 100000);
   }
 
   let radius = 1000;
 
-  const drawCircles = (a) => {
-    for(let i = 0; i < a; i++){
-      drawCircle();
-    }
-  }
+  // const drawCircles = (a) => {
+  //   for(let i = 0; i < a; i++){
+  //     drawCircle();
+  //   }
+  // }
 
 
-  //function to generate random coordinates around the entire world
-  const randomCoords = () => {
-    let lat = Math.random() * 100 + 30.2848;
-    let long = Math.random() * 100 + -97.7342;
-    return {
-      lat: lat,
-      lng: long,
-    }
-  }
 
   const drawCircle = (a) => {
     return <Circle key={a} center={
-      {
-      lat: randomNum(),
-      lng: randomNum()
-      }
+     coords 
+      
     }
     radius= {radius}
     strokeColor= {'rgba(255,0,0,0.5)'}
@@ -76,25 +91,42 @@ export default function App() {
     />;
   }
 
-  let items= [ <Circle key={1} center={coords}
+  let items= [ 
+    // <Circle key={1} center={coords}
+    // radius= {radius}
+    // strokeColor= {'rgba(255,0,0,0.5)'}
+    // fillColor= {'rgba(255,0,0,0.5)'}/>
+  ]; 
+
+  //add 100 circles to items
+  // for(let i = 3; i < 100; i++){
+  //   items.push(drawCircle(i));
+  // }
+{/* <Circle key={1} center={coords}
     radius= {radius}
     strokeColor= {'rgba(255,0,0,0.5)'}
     fillColor= {'rgba(255,0,0,0.5)'}/>,
 
-    <Circle key={2} center={coords2}
+    <Circle key={2} center={coords}
     radius= {radius}
     strokeColor= {'rgba(255,0,0,0.5)'}
-    fillColor= {'rgba(255,0,0,0.5)'}/>
+    fillColor= {'rgba(255,0,0,0.5)'}/> */}
   
-  ]; 
-
-  for(let a = 3; a < 100; a++){
-  items.push(drawCircle(a));
-  }
-
+const addShize = () => {
+  items.push(<Circle key={0} center={coords}
+    radius= {radius}
+    strokeColor= {'rgba(255,0,0,0.5)'}
+    fillColor= {'rgba(255,0,0,0.5)'}/>)
+    console.log(items.length);
+}
     
   return (
+    //open the report screen
+
+
     <View style={styles.container}>
+    
+        
       <MapView
         style={styles.map}
         region={coords}
@@ -115,11 +147,33 @@ export default function App() {
           } 
         />
 
+        <Circle center={coords}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,0.5)'}
+        />
+          <Circle center={coords2}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,0.5)'}
+        />
+
+      <Circle center={coords3}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,0.5)'}
+        />
+
+
     {
       items
     }
-          
-      <TouchableOpacity style={styles.button}>
+    {
+      //<ReportScreen/>
+    }
+
+
+
+      <TouchableOpacity style={styles.button}
+       onPress={() => <ReportScreen/>} 
+        >
         <Text style={styles.buttonText}>REPORT</Text>
       </TouchableOpacity>
       </MapView>
@@ -129,6 +183,31 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
   container: {
     flex: 1,
     fontSize: 10,
@@ -168,7 +247,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     textAlignVertical: 'center',
-    top: 0, //760. sometimes u may have to change to 0, 0 for text to be on button
+    top:0, //760. sometimes u may have to change to 0, 0 for text to be on button
     left: 0 //105. sometimes u may have to change to 0, 0 for text to be on button
   },
 
