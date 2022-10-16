@@ -22,6 +22,35 @@
       "bundleIdentifier": "com.securcity.securcity",
       "config": {
         "googleMapsApiKey": "AIzaSyCZqXGOnO2STy6tVrPoBHHTtroIcxdGMuA"
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show you nearby places.",
+        "NSLocationAlwaysUsageDescription": "This app needs access to your location to show you nearby places.",
+        "NSCameraUsageDescription": "This app needs access to your camera to scan QR codes.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to select QR codes.",
+        "NSMicrophoneUsageDescription": "This app needs access to your microphone to record audio.",
+        "NSCalendarsUsageDescription": "This app needs access to your calendar to show you events.",
+        "NSRemindersUsageDescription": "This app needs access to your reminders to show you reminders.",
+        "NSContactsUsageDescription": "This app needs access to your contacts to show you contacts.",
+        "NSBluetoothPeripheralUsageDescription": "This app needs access to your bluetooth to connect to bluetooth devices.",
+        "NSMotionUsageDescription": "This app needs access to your motion to detect shaking.",
+        "NSFaceIDUsageDescription": "This app needs access to your face to unlock the app.",
+        "NSAppleMusicUsageDescription": "This app needs access to your music to play music.",
+        "NSHealthShareUsageDescription": "This app needs access to your health data to show you health data.",
+        "NSHealthUpdateUsageDescription": "This app needs access to your health data to update your health data.",
+        "NSHomeKitUsageDescription": "This app needs access to your home to control your home.",
+        "NSMediaLibraryUsageDescription": "This app needs access to your media library to show you media.",
+        "NSMotionUsageDescription": "This app needs access to your motion to detect shaking.",
+        "NSNFCReaderUsageDescription": "This app needs access to your NFC to read NFC tags.",
+        "NSPhotoLibraryAddUsageDescription": "This app needs access to your photo library to save photos.",
+        "NSSpeechRecognitionUsageDescription": "This app needs access to your microphone to recognize speech.",
+        "NSVideoSubscriberAccountUsageDescription": "This app needs access to your video account to show you videos.",
+        "NSAppleMusicUsageDescription": "This app needs access to your music to play music.",
+        "NSHealthShareUsageDescription": "This app needs access to your health data to show you health data.",
+        "NSHealthUpdateUsageDescription": "This app needs access to your health data to update your health data.",
+        "NSHomeKitUsageDescription": "This app needs access to your home to control your home.",
+        "NSMediaLibraryUsageDescription": "This app needs access to your media library to show you media.",
+        "NSMotionUsageDescription": "This app needs access to your motion to detect shaking."
       }
     },
     "android": {
