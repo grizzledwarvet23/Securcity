@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Keyboard, Button, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 
-const countries = ["Assault", "Robbery", "Homeless People", "Dirtiness", "Noise Pollution"]
+const countries = ["Assault", "Robbery", "Homeless People", "Dirty Area", "Noise Pollution"]
 
 
-export default function ReportScreen() {
+export default function ReportScreen({navigation, markerCoords}) {
+    console.log(markerCoords)
     var text;
     return ( 
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -96,16 +97,14 @@ export default function ReportScreen() {
         },
         header2: {
             position: 'absolute',
-            left: 30,
+            left: 142,
             fontSize: 30,
-            color: '#000000',
+            color: '#ffffff',
             fontWeight: 'bold',
-            top: 753,
-            left: 140,
-            color: 'white'
+            top: 680
         },
         textBox: {
-            top: -7,
+            top: 40,
             left: 49,
             borderBottomColor: '#000000',
             borderBottomWidth: 1,
@@ -115,7 +114,7 @@ export default function ReportScreen() {
 
         },
         button: {
-            top: 350,
+            top: 320,
             left: -155,
             backgroundColor: 'red',
             color: 'white',
