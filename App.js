@@ -29,7 +29,7 @@ export default function App() {
     
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Welcome to Securcity!</Text>
+      
       <MapView
         style={styles.map}
         region={coords}
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     textAlignVertical: 'center',
-    top: 760,
-    left: 105
+    top: 760, //760
+    left:105 //105
   }
 
 });
