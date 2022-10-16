@@ -19,12 +19,16 @@ export default function App() {
     longitudeDelta: 0.0421,
   });
 
-  const Map = () => {
+
+  const Map = 
+  () => {
+    console.log('hey')
     const [pin, setPin] = useState({
       latitude: 37.78825,
       longitude: -122.4324,
     });
   }
+
 
     
   return (
@@ -88,8 +92,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     textAlignVertical: 'center',
-    top: 760, //760
-    left:105 //105
+    top: 0, //760
+    left:0 //105
   }
 
 });
