@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Circle, Marker } from 'react-native-maps';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useState, useEffect } from 'react';
 import {Location, Permissions} from 'expo';
@@ -22,7 +22,7 @@ export default function App() {
 
   const Map = 
   () => {
-    console.log('hey')
+    console.log(latitude + " " + longitude);
     const [pin, setPin] = useState({
       latitude: 37.78825,
       longitude: -122.4324,
@@ -33,16 +33,32 @@ export default function App() {
     
   return (
     <View style={styles.container}>
-      
       <MapView
         style={styles.map}
         region={coords}
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
       >
-        <Marker coordinate={coords} title="MARKER" draggable={true} onDragEnd={
-          e=>setPin(e.nativeEvent.coordinate)
-          } />
+        <Marker 
+        coordinate={coords} 
+        title="Homeless Person" 
+        description="There is a guy on the sidewalk drinking. He does not seem sus."
+        draggable={true} onDragEnd={
+          e=> {
+          try {
+          setPin(e.nativeEvent.coordinate)
+          } catch (error) {
+            console.log(error)
+          }}
+          } 
+        />
+          <Circle
+          center={coords}
+          radius= {200}
+          strokeColor= {'rgba(255,0,0,0.5)'}
+          fillColor= {'rgba(255,0,0,0.5)'} 
+          />
+
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>REPORT</Text>
       </TouchableOpacity>
@@ -92,8 +108,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     textAlignVertical: 'center',
-    top: 0, //760
-    left:0 //105
-  }
+    top: 0, //760. sometimes u may have to change to 0, 0 for text to be on button
+    left: 0 //105. sometimes u may have to change to 0, 0 for text to be on button
+  },
+
+  circle: {
+    radius: 100,
+    strokeColor: 'rgba(0,0,255,0.5)',
+    fillColor: 'rgba(0,0,255,0.5)',
+  }, 
+
+
 
 });
