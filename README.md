@@ -9,9 +9,10 @@ Living in the city can be dangerous, and people, especially students, should be 
 
 ## Pictures
 
-![gallery (1)](https://user-images.githubusercontent.com/56271444/196045519-b8d90b79-8703-4562-be13-d4eb04aa3b71.jpg)
 ![gallery](https://user-images.githubusercontent.com/56271444/196045520-72a6a93f-f144-42e8-8f88-1a157b138e8a.jpg)
-
+![gallery (1)](https://user-images.githubusercontent.com/56271444/196045519-b8d90b79-8703-4562-be13-d4eb04aa3b71.jpg)
+![image](https://user-images.githubusercontent.com/56271444/196051087-b9a2c2b8-0428-4d12-9e47-64d6fd9d5e00.png)
+![image](https://user-images.githubusercontent.com/56271444/196051096-ff2e7d45-ea72-4374-8e7e-4585f3f4400e.png)
 
 
 
