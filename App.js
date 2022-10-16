@@ -22,7 +22,6 @@ export default function App() {
   var userLong =1000;
   const opacity = '0.5';
 
-
   const [coords, setCoords] = useState({
     latitude: 30.2849,
     longitude: -97.7349,
@@ -58,8 +57,6 @@ export default function App() {
   //   longitudeDelta: 0.0421,
   // });
 
-
-
   const Map = 
   () => {
     console.log(latitude + " " + longitude);
@@ -81,8 +78,6 @@ export default function App() {
   //     drawCircle();
   //   }
   // }
-
-
 
   const drawCircle = (a) => {
     return <Circle key={a} center={
@@ -116,10 +111,8 @@ export default function App() {
         />
 
   ]; 
-
   
 {}
-
     
   return (
     //open the report screen

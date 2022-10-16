@@ -4,9 +4,17 @@ import SelectDropdown from 'react-native-select-dropdown'
 const countries = ["Assault", "Robbery", "Homeless People", "Dirty Area", "Noise Pollution"]
 
 
-export default function ReportScreen({navigation, markerCoords}) {
+export default function ReportScreen({navigation, markerCoords, count}) {
+    console.log(count)
     console.log(markerCoords)
     var text;
+    
+    if(count == 3)
+    {
+    alert("Please wait 24 hours before reporting another incident!")
+        navigation.navigate("Map")
+    }
+    
     return ( 
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -41,7 +49,7 @@ export default function ReportScreen({navigation, markerCoords}) {
          
         <TextInput
             style = {styles.textBox}    
-            placeholder="Enter here"
+            placeholder="Enter here (min. 20 characters)"
             maxLength = {150}
             multiline={true}
             onChangeText ={(value) => text = value}
@@ -49,7 +57,9 @@ export default function ReportScreen({navigation, markerCoords}) {
         
         <TouchableOpacity 
             style={styles.button}
-            onPress={() => console.log(2)}>
+            onPress={() => 
+                navigation.navigate("Map")
+            }>
         </TouchableOpacity>
         <Text
             style={styles.header2}

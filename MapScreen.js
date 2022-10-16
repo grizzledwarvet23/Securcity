@@ -12,7 +12,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
+
 export default function MapScreen({navigation}) {
+  let co = 0;
+  console.log(co)
   const [modalVisible, setModalVisible] = useState(false);
 
   const [errorMsg, setErrorMsg] = useState(null)
@@ -22,7 +25,7 @@ export default function MapScreen({navigation}) {
 
 
   const [coords, setCoords] = useState({
-    latitude: 30.2849,
+    latitude: 30.2843,
     longitude: -97.7349,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
@@ -49,13 +52,19 @@ export default function MapScreen({navigation}) {
     longitudeDelta: 0.0421,
   });
 
-  // const [coords2, setCoords2] = useState({
-  //   latitude: userLat,
-  //   longitude: userLong,
-  //   latitudeDelta: 0.0922,
-  //   longitudeDelta: 0.0421,
-  // });
+  const [coords5, setCoords5] = useState({
+    latitude: 30.2829,
+    longitude: -97.7269,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
 
+  const [coords6, setCoords6] = useState({
+    latitude: 30.2818,
+    longitude: -97.7313,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
 
 
   const Map = 
@@ -74,59 +83,56 @@ export default function MapScreen({navigation}) {
 
   let radius = 50;
 
-  // const drawCircles = (a) => {
-  //   for(let i = 0; i < a; i++){
-  //     drawCircle();
-  //   }
-  // }
+ 
 
 
 
-  const drawCircle = (a) => {
-    return <Circle key={a} center={
-     coords 
-      
-    }
-    radius= {radius}
-    strokeColor= {'rgba(255,0,0,1)'}
-    fillColor= {'rgba(255,0,0,0.5)'} 
-    />;
-  }
+  let op = '0.50';
 
   let items= [ 
     <Circle center={coords} key={0}
           radius= {radius}
-          fillColor={'rgba(255,0,0,0.5)'}
+          fillColor={'rgba(255,0,0,' + op + ')'}
         />,
         <Circle center={coords2} key={1}
           radius= {radius}
-          fillColor={'rgba(255,0,0,0.5)'}
+          fillColor={'rgba(255,0,0,' + op + ')'}
         />,
         //make circle 3 same radius as circle 2 but slightly different coords
         <Circle center={coords3} key={2}
           radius= {radius}
-          fillColor={'rgba(255,0,0,0.5)'}
+          fillColor={'rgba(255,0,0,' + op + ')'}
         />,
         //make circle 4 same radius as circle 2 but slightly different coords
         <Circle center={coords4} key={3}
           radius= {radius}
-          fillColor={'rgba(255,0,0,0.5)'}
+          fillColor={'rgba(255,0,0,' + op + ')'}
+        />,
+        <Circle center={coords5} key={4}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,' + op + ')'}
+        />,
+        <Circle center={coords6} key={5}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,' + op + ')'}
         />
+        
+
 
   ]; 
 
-  
-{}
-  
+  const addCircle = () => {
+    console.log(items.length);
+    items.push(<Circle center={coords} key={randomNum()}
+          radius= {radius}
+          fillColor={'rgba(255,0,0,' + op + ')'}
+        />);
+    this.forceUpdate();
+  }
 
   
-const addShize = () => {
-  items.push(<Circle key={0} center={coords}
-    radius= {radius}
-    strokeColor= {'rgba(255,0,0,0.5)'}
-    fillColor= {'rgba(255,0,0,0.5)'}/>)
-    console.log(items.length);
-}
+
+
     
   return (
     //open the report screen
@@ -146,10 +152,10 @@ const addShize = () => {
         <Marker 
         
         pinColor={'green'}
+        //onDrag={(e) => addCircle()}
         
         coordinate={coords} 
-        title="Homeless Person" 
-        description="There is a guy on the sidewalk drinking. He does not seem sus."
+        title="Drag to set report location" 
         draggable={true} onDragEnd={
           e=> {
           try {
@@ -158,6 +164,59 @@ const addShize = () => {
             console.log(error)
           }}
           } 
+        />
+
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords} 
+        title="Assault" 
+        description="There was a fight going on here, I took a few hits"
+        />
+
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords2} 
+        title="Dirty Area" 
+        description="Lot's of smelly trash here...probably a CS student?"
+        />
+
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords3} 
+        title="Noise Pollution" 
+        description="It's really loud here, frat parties go on all night"
+        />
+
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords4} 
+        title="Robbery" 
+        description="BRO SOMEONE JUST ROBBED THE SPORTS STORE, THEY TRYNA BE LIKE LEBRON"
+        />
+
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords5} 
+        title="Homeless People" 
+        description="There's a lot of homeless people here, they're all sleeping"
+        />
+<Marker 
+        
+        pinColor={'green'}
+        opacity={0}
+        coordinate={coords6} 
+        title="Assault" 
+        description="Crazy concert near moody center, everyone's fighting in the line"
         />
 
    
@@ -174,9 +233,7 @@ const addShize = () => {
         //pass in coordinates of the marker to the report screen
         //get the current coordinates of the marker
 
-        navigation.navigate("Report",{markerCoords: 
-            {latitude: coords.latitude, longitude: coords.longitude}
-        } )} 
+        navigation.navigate("Report" )} 
         >
         <Text style={styles.buttonText}>REPORT</Text>
       </TouchableOpacity>
@@ -224,7 +281,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     height: '100%',
     alignItems: 'center',
-    // width: '100%',
   },
   //create a style for the title text
   titleText: {
@@ -256,7 +312,7 @@ const styles = StyleSheet.create({
   },
 
   circle: {
-    radius: 100,
+    // radius: 100,
     strokeColor: 'rgba(0,0,255,0.5)',
     fillColor: 'rgba(0,0,255,0.5)',
   }, 
