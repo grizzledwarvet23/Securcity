@@ -19,6 +19,14 @@ export default function App() {
     longitudeDelta: 0.0421,
   });
 
+  const [coords2, setCoords2] = useState({
+    latitude: 30.2849,
+    longitude: -97.7320,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
+
 
   const Map = 
   () => {
@@ -28,8 +36,6 @@ export default function App() {
       longitude: -122.4324,
     });
   }
-
-
     
   return (
     <View style={styles.container}>
@@ -55,6 +61,13 @@ export default function App() {
           <Circle
           center={coords}
           radius= {200}
+          strokeColor= {'rgba(255,0,0,0.5)'}
+          fillColor= {'rgba(255,0,0,0.5)'} 
+          />
+
+        <Circle
+          center={coords2}
+          radius= {300}
           strokeColor= {'rgba(255,0,0,0.5)'}
           fillColor= {'rgba(255,0,0,0.5)'} 
           />
