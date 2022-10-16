@@ -44,8 +44,7 @@ export default function App() {
     return Math.floor( (Math.random() * 100) + 100);
   }
 
-  let radius = randomNum();
-  let radius2 = randomNum();
+  let radius = 1000;
 
   const drawCircles = (a) => {
     for(let i = 0; i < a; i++){
@@ -53,8 +52,24 @@ export default function App() {
     }
   }
 
+
+  //function to generate random coordinates around the entire world
+  const randomCoords = () => {
+    let lat = Math.random() * 100 + 30.2848;
+    let long = Math.random() * 100 + -97.7342;
+    return {
+      lat: lat,
+      lng: long,
+    }
+  }
+
   const drawCircle = (a) => {
-    return <Circle key={a} center={coords}
+    return <Circle key={a} center={
+      {
+      lat: randomNum(),
+      lng: randomNum()
+      }
+    }
     radius= {radius}
     strokeColor= {'rgba(255,0,0,0.5)'}
     fillColor= {'rgba(255,0,0,0.5)'} 
