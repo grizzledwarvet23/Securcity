@@ -5,6 +5,7 @@ Developed for HackTX 2022
 
 [Project Link](https://devpost.com/software/securcity)
 
+Living in the city can be dangerous, and people, especially students, should be informed on which areas are less safe than others. Crowdsourcing + easy to understand circles = reliably avoid danger.
 
 ## Inspiration
 As freshman university students, we have all had the same issue of wishing we could have known to not go down a certain street to avoid some unpleasant interactions. We thought that this app would be cool to build because it could be really useful for students on campus and people in cities, in general.
