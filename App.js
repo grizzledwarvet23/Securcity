@@ -13,8 +13,8 @@ export default function App() {
 
 
   const [coords, setCoords] = useState({
-    latitude: userLat,
-    longitude: userLong,
+    latitude: 30.2849,
+    longitude: -97.7341,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
@@ -36,7 +36,9 @@ export default function App() {
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
       >
-        <Marker coordinate={coords} title="MARKER" draggable={true} onDragEnd={e=>setPin(e.nativeEvent.coordinate)} />
+        <Marker coordinate={coords} title="MARKER" draggable={true} onDragEnd={
+          e=>setPin(e.nativeEvent.coordinate)
+          } />
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>REPORT</Text>
       </TouchableOpacity>
@@ -77,6 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     textAlign: 'center',
+    top: 750
   },
   //create a style for the button text
   buttonText: {
@@ -85,6 +88,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     textAlignVertical: 'center',
+    top: 760,
+    left: 105
   }
 
 });
